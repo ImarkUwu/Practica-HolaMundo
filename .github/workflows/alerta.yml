@@ -24,4 +24,4 @@ jobs:
 
       - name: Enviar notificación a ntfy
         run: |
-          curl -d "Nuevo push en main por ${{ github.actor }} en ${{ github.repository }}" ntfy.sh/devops-itla
+          curl -d "Notificación de Gian Pérez 2025-1142" -H "Title: Alerta de GitHub Actions" ntfy.sh/devops-itla
