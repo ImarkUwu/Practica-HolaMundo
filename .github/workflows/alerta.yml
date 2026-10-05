@@ -1,0 +1,27 @@
+
+# Config de la alerta
+name: Alerta
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Ejecutar script de alerta
+        run: node HM.js
+
+      - name: Enviar notificación a ntfy
+        run: |
+          curl -d "Nuevo push en main por ${{ github.actor }} en ${{ github.repository }}" ntfy.sh/devops-itla
